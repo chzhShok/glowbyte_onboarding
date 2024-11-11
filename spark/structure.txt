@@ -1,0 +1,24 @@
+Structure of project:
+spark
+--| task_spark.ipynb
+--| data/
+----| csv/
+------| taxi+_zone_lookup.csv
+------| yellow_tripdata_2020-01.csv
+------| yellow_tripdata_2020-02.csv
+------| yellow_tripdata_2020-03.csv
+------| yellow_tripdata_2020-04.csv
+------| yellow_tripdata_2020-05.csv
+------| yellow_tripdata_2020-06.csv
+----| parquet/
+------| 2020/
+--------| 01/
+--------| 02/
+--------| 03/
+--------| 04/
+--------| 05/
+--------| 06/
+------| prepared/
+--------| pickup_2020/
+--------| dropoff_2020/
+
