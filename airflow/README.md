@@ -1,1 +1,1 @@
-![dag]("./media/dag.png")
+![dag]("media/dag.png")
