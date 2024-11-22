@@ -1,0 +1,61 @@
+[2024-11-22T15:12:46.246+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.save_to_postgres scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:12:46.271+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.save_to_postgres scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:12:46.272+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 6
+[2024-11-22T15:12:46.319+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): save_to_postgres> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:12:46.362+0000] {standard_task_runner.py:60} INFO - Started process 844 to run task
+[2024-11-22T15:12:46.368+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'save_to_postgres', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp6po3axke']
+[2024-11-22T15:12:46.375+0000] {standard_task_runner.py:88} INFO - Job 20: Subtask save_to_postgres
+[2024-11-22T15:12:46.499+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.save_to_postgres scheduled__2024-11-21T00:00:00+00:00 [running]> on host 892507b96f2b
+[2024-11-22T15:12:46.710+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='save_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:12:46.719+0000] {python.py:201} INFO - Done. Returned value was: {{ task_instance.xcom_pull(task_ids='insert_data_to_postgres', dag_id='adhoc_airflow', key='return_value') }}
+[2024-11-22T15:12:46.739+0000] {xcom.py:664} ERROR - Object of type PlainXComArg is not JSON serializable. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your *** config or make sure to decorate your object with attr.
+[2024-11-22T15:12:46.742+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/json.py", line 91, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/serialization/serde.py", line 180, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class '***.models.xcom_arg.PlainXComArg'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 440, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2980, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/xcom.py", line 247, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/xcom.py", line 662, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/json.py", line 104, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/json.py", line 93, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type PlainXComArg is not JSON serializable
+[2024-11-22T15:12:46.770+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=save_to_postgres, execution_date=20241121T000000, start_date=20241122T151246, end_date=20241122T151246
+[2024-11-22T15:12:46.802+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 20 for task save_to_postgres (Object of type PlainXComArg is not JSON serializable; 844)
+[2024-11-22T15:12:46.849+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T15:12:46.884+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

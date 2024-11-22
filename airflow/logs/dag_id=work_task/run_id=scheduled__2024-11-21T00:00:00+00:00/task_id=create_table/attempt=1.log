@@ -1,0 +1,547 @@
+[2024-11-22T14:46:18.073+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:46:18.113+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:46:18.115+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T14:46:18.197+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T14:46:18.205+0000] {standard_task_runner.py:60} INFO - Started process 584 to run task
+[2024-11-22T14:46:18.214+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp9bce_p2v']
+[2024-11-22T14:46:18.218+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask create_table
+[2024-11-22T14:46:18.334+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 370c84c603a0
+[2024-11-22T14:46:18.559+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T14:46:18.563+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T14:46:18.622+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 277, in execute
+    hook = self.get_db_hook()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 188, in get_db_hook
+    return self._hook
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 150, in _hook
+    conn = BaseHook.get_connection(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/base.py", line 82, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 479, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2024-11-22T14:46:18.643+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T144618, end_date=20241122T144618
+[2024-11-22T14:46:18.666+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 3 for task create_table (The conn_id `postgres_default` isn't defined; 584)
+[2024-11-22T14:46:18.704+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T14:46:18.790+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T14:48:13.372+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:48:13.391+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:48:13.392+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T14:48:13.414+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T14:48:13.421+0000] {standard_task_runner.py:60} INFO - Started process 704 to run task
+[2024-11-22T14:48:13.425+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpzkakqift']
+[2024-11-22T14:48:13.429+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask create_table
+[2024-11-22T14:48:13.577+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 370c84c603a0
+[2024-11-22T14:48:13.973+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T14:48:13.976+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T14:48:14.019+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 277, in execute
+    hook = self.get_db_hook()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 188, in get_db_hook
+    return self._hook
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 150, in _hook
+    conn = BaseHook.get_connection(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/base.py", line 82, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 479, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2024-11-22T14:48:14.027+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T144813, end_date=20241122T144814
+[2024-11-22T14:48:14.046+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 5 for task create_table (The conn_id `postgres_default` isn't defined; 704)
+[2024-11-22T14:48:14.081+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T14:48:14.120+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T14:49:44.622+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:49:44.634+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:49:44.635+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T14:49:44.652+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T14:49:44.658+0000] {standard_task_runner.py:60} INFO - Started process 805 to run task
+[2024-11-22T14:49:44.662+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmplafp2r0e']
+[2024-11-22T14:49:44.666+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask create_table
+[2024-11-22T14:49:44.738+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 370c84c603a0
+[2024-11-22T14:49:44.853+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T14:49:44.856+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T14:49:44.878+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T14:49:44.920+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T14:49:44.926+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+             ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/hooks/sql.py", line 391, in run
+    with closing(self.get_conn()) as conn:
+                 ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/postgres/hooks/postgres.py", line 155, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "postgres" (172.18.0.2), port 1534 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+[2024-11-22T14:49:44.956+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T144944, end_date=20241122T144944
+[2024-11-22T14:49:44.975+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 6 for task create_table (connection to server at "postgres" (172.18.0.2), port 1534 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+; 805)
+[2024-11-22T14:49:45.007+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T14:49:45.043+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T14:51:47.959+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:51:47.976+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:51:47.977+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T14:51:48.005+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T14:51:48.013+0000] {standard_task_runner.py:60} INFO - Started process 951 to run task
+[2024-11-22T14:51:48.020+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp1clinwsn']
+[2024-11-22T14:51:48.024+0000] {standard_task_runner.py:88} INFO - Job 7: Subtask create_table
+[2024-11-22T14:51:48.116+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 370c84c603a0
+[2024-11-22T14:51:48.249+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T14:51:48.251+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T14:51:48.277+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T14:51:48.309+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T14:51:48.319+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);, parameters: None
+[2024-11-22T14:51:48.447+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T145147, end_date=20241122T145148
+[2024-11-22T14:51:48.495+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T14:51:48.640+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T14:54:36.616+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:54:36.630+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T14:54:36.631+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T14:54:36.651+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T14:54:36.658+0000] {standard_task_runner.py:60} INFO - Started process 1151 to run task
+[2024-11-22T14:54:36.663+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpfj34n7s5']
+[2024-11-22T14:54:36.667+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask create_table
+[2024-11-22T14:54:36.742+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 370c84c603a0
+[2024-11-22T14:54:36.805+0000] {abstractoperator.py:707} ERROR - Exception rendering Jinja template for task 'create_table', field 'sql'. Template: '/opt/***/dags/sql/create_table.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/abstractoperator.py", line 699, in _do_render_template_fields
+    rendered_content = self.render_template(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/template/templater.py", line 171, in render_template
+    template = jinja_env.get_template(value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 204, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: /opt/airflow/dags/sql/create_table.sql
+[2024-11-22T14:54:36.813+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2334, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2465, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2877, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 1241, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/abstractoperator.py", line 699, in _do_render_template_fields
+    rendered_content = self.render_template(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/template/templater.py", line 171, in render_template
+    template = jinja_env.get_template(value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 204, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: /opt/airflow/dags/sql/create_table.sql
+[2024-11-22T14:54:36.831+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T145436, end_date=20241122T145436
+[2024-11-22T14:54:36.850+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 10 for task create_table (/opt/airflow/dags/sql/create_table.sql; 1151)
+[2024-11-22T14:54:36.888+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T14:54:36.929+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:00:34.060+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:00:34.073+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:00:34.073+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:00:34.092+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:00:34.103+0000] {standard_task_runner.py:60} INFO - Started process 266 to run task
+[2024-11-22T15:00:34.108+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpx6whuwo8']
+[2024-11-22T15:00:34.112+0000] {standard_task_runner.py:88} INFO - Job 14: Subtask create_table
+[2024-11-22T15:00:34.194+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 892507b96f2b
+[2024-11-22T15:00:34.382+0000] {abstractoperator.py:707} ERROR - Exception rendering Jinja template for task 'create_table', field 'sql'. Template: '/opt/***/dags/sql/create_table.sql'
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/abstractoperator.py", line 699, in _do_render_template_fields
+    rendered_content = self.render_template(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/template/templater.py", line 171, in render_template
+    template = jinja_env.get_template(value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 204, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: /opt/airflow/dags/sql/create_table.sql
+[2024-11-22T15:00:34.393+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2334, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode, session=session)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2465, in _execute_task_with_callbacks
+    task_orig = self.render_templates(context=context)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 2877, in render_templates
+    original_task.render_template_fields(context)
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 1241, in render_template_fields
+    self._do_render_template_fields(self, self.template_fields, context, jinja_env, set())
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/abstractoperator.py", line 699, in _do_render_template_fields
+    rendered_content = self.render_template(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/template/templater.py", line 171, in render_template
+    template = jinja_env.get_template(value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/jinja2/loaders.py", line 204, in get_source
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: /opt/airflow/dags/sql/create_table.sql
+[2024-11-22T15:00:34.512+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T150034, end_date=20241122T150034
+[2024-11-22T15:00:34.540+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 14 for task create_table (/opt/airflow/dags/sql/create_table.sql; 266)
+[2024-11-22T15:00:34.708+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T15:00:34.751+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:02:20.795+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:02:20.967+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:02:20.968+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:02:21.737+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:02:22.170+0000] {standard_task_runner.py:60} INFO - Started process 367 to run task
+[2024-11-22T15:02:22.663+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpgujlmgpq']
+[2024-11-22T15:02:22.738+0000] {standard_task_runner.py:88} INFO - Job 15: Subtask create_table
+[2024-11-22T15:02:24.933+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 892507b96f2b
+[2024-11-22T15:02:25.400+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:02:25.413+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T15:02:25.720+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:02:26.115+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:02:26.256+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);, parameters: None
+[2024-11-22T15:02:26.358+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T150220, end_date=20241122T150226
+[2024-11-22T15:02:26.468+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:02:26.650+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:16:44.297+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:16:44.309+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:16:44.310+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:16:44.328+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:16:44.333+0000] {standard_task_runner.py:60} INFO - Started process 1114 to run task
+[2024-11-22T15:16:44.338+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpcv21yq97']
+[2024-11-22T15:16:44.342+0000] {standard_task_runner.py:88} INFO - Job 21: Subtask create_table
+[2024-11-22T15:16:44.414+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 892507b96f2b
+[2024-11-22T15:16:44.524+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:16:44.528+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T15:16:44.549+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:16:44.580+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:16:44.587+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);, parameters: None
+[2024-11-22T15:16:44.614+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T151644, end_date=20241122T151644
+[2024-11-22T15:16:44.641+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:16:44.678+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:26:28.587+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:26:28.602+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:26:28.602+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:26:28.632+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:26:28.641+0000] {standard_task_runner.py:60} INFO - Started process 1779 to run task
+[2024-11-22T15:26:28.646+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp8w2xzn5y']
+[2024-11-22T15:26:28.651+0000] {standard_task_runner.py:88} INFO - Job 26: Subtask create_table
+[2024-11-22T15:26:28.730+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 892507b96f2b
+[2024-11-22T15:26:28.908+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:26:28.913+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);
+[2024-11-22T15:26:28.945+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:26:28.967+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:26:28.977+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, date)
+);, parameters: None
+[2024-11-22T15:26:29.003+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T152628, end_date=20241122T152629
+[2024-11-22T15:26:29.041+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:26:29.093+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:38:47.904+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:38:47.919+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:38:47.920+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:38:47.947+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:38:47.960+0000] {standard_task_runner.py:60} INFO - Started process 281 to run task
+[2024-11-22T15:38:47.967+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp07xu7je9']
+[2024-11-22T15:38:47.973+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask create_table
+[2024-11-22T15:38:48.115+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 7003e752bc1d
+[2024-11-22T15:38:48.237+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:38:48.238+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, name, date)
+);
+[2024-11-22T15:38:48.266+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 277, in execute
+    hook = self.get_db_hook()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 188, in get_db_hook
+    return self._hook
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 150, in _hook
+    conn = BaseHook.get_connection(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/base.py", line 82, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 479, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2024-11-22T15:38:48.276+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T153847, end_date=20241122T153848
+[2024-11-22T15:38:48.290+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 3 for task create_table (The conn_id `postgres_default` isn't defined; 281)
+[2024-11-22T15:38:48.313+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T15:38:48.368+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:40:12.005+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:40:12.034+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:40:12.035+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:40:12.127+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:40:12.241+0000] {standard_task_runner.py:60} INFO - Started process 391 to run task
+[2024-11-22T15:40:12.323+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp7zr183nj']
+[2024-11-22T15:40:12.527+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask create_table
+[2024-11-22T15:40:14.023+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 7003e752bc1d
+[2024-11-22T15:40:14.603+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:40:14.616+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, name, date)
+);
+[2024-11-22T15:40:14.666+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:40:14.693+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:40:14.760+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, name, date)
+);, parameters: None
+[2024-11-22T15:40:14.869+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T154012, end_date=20241122T154014
+[2024-11-22T15:40:15.089+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:40:15.377+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:41:29.819+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:41:29.846+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:41:29.847+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:41:29.876+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:41:29.900+0000] {standard_task_runner.py:60} INFO - Started process 478 to run task
+[2024-11-22T15:41:29.905+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmp8sdgh0ct']
+[2024-11-22T15:41:29.909+0000] {standard_task_runner.py:88} INFO - Job 13: Subtask create_table
+[2024-11-22T15:41:30.011+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 7003e752bc1d
+[2024-11-22T15:41:30.149+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:41:30.152+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, name, date)
+);
+[2024-11-22T15:41:30.173+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:41:30.194+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:41:30.202+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (id, name, date)
+);, parameters: None
+[2024-11-22T15:41:30.222+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T154129, end_date=20241122T154130
+[2024-11-22T15:41:30.250+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:41:30.308+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:44:02.805+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:44:02.823+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:44:02.824+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:44:02.848+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:44:02.854+0000] {standard_task_runner.py:60} INFO - Started process 651 to run task
+[2024-11-22T15:44:02.858+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmphev71d1f']
+[2024-11-22T15:44:02.862+0000] {standard_task_runner.py:88} INFO - Job 17: Subtask create_table
+[2024-11-22T15:44:02.947+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host 7003e752bc1d
+[2024-11-22T15:44:03.063+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:44:03.065+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (date)
+);
+[2024-11-22T15:44:03.079+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:44:03.091+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:44:03.098+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (date)
+);, parameters: None
+[2024-11-22T15:44:03.116+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T154402, end_date=20241122T154403
+[2024-11-22T15:44:03.165+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:44:03.209+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:49:29.752+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:49:29.775+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:49:29.776+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:49:29.814+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:49:29.822+0000] {standard_task_runner.py:60} INFO - Started process 294 to run task
+[2024-11-22T15:49:29.842+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpdp8no877']
+[2024-11-22T15:49:29.863+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask create_table
+[2024-11-22T15:49:29.995+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host e3d4853ded5c
+[2024-11-22T15:49:30.114+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:49:30.116+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (date)
+);
+[2024-11-22T15:49:30.141+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 277, in execute
+    hook = self.get_db_hook()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 188, in get_db_hook
+    return self._hook
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.11/functools.py", line 1001, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/common/sql/operators/sql.py", line 150, in _hook
+    conn = BaseHook.get_connection(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/hooks/base.py", line 82, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/connection.py", line 479, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2024-11-22T15:49:30.148+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T154929, end_date=20241122T154930
+[2024-11-22T15:49:30.162+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 3 for task create_table (The conn_id `postgres_default` isn't defined; 294)
+[2024-11-22T15:49:30.180+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-11-22T15:49:30.214+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-11-22T15:50:43.700+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:50:43.733+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [queued]>
+[2024-11-22T15:50:43.738+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 6
+[2024-11-22T15:50:43.775+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_table> on 2024-11-21 00:00:00+00:00
+[2024-11-22T15:50:43.785+0000] {standard_task_runner.py:60} INFO - Started process 382 to run task
+[2024-11-22T15:50:43.797+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'work_task', 'create_table', 'scheduled__2024-11-21T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/task.py', '--cfg-path', '/tmp/tmpgz5x99tr']
+[2024-11-22T15:50:43.805+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask create_table
+[2024-11-22T15:50:43.956+0000] {task_command.py:423} INFO - Running <TaskInstance: work_task.create_table scheduled__2024-11-21T00:00:00+00:00 [running]> on host e3d4853ded5c
+[2024-11-22T15:50:44.118+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='work_task' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2024-11-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-11-21T00:00:00+00:00'
+[2024-11-22T15:50:44.121+0000] {sql.py:276} INFO - Executing: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (date)
+);
+[2024-11-22T15:50:44.138+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:50:44.159+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2024-11-22T15:50:44.170+0000] {sql.py:450} INFO - Running statement: CREATE TABLE IF NOT EXISTS random_data (
+    id NUMERIC(3) NOT NULL,
+    name VARCHAR(15) NOT NULL,
+    date DATE NOT NULL,
+    UNIQUE (date)
+);, parameters: None
+[2024-11-22T15:50:44.205+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=work_task, task_id=create_table, execution_date=20241121T000000, start_date=20241122T155043, end_date=20241122T155044
+[2024-11-22T15:50:44.265+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-11-22T15:50:44.325+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
