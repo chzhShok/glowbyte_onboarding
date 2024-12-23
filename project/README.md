@@ -8,12 +8,17 @@ echo -e "AIRFLOW_UID=$(id -u)" > .env
 ```bash
 mkdir prepared_csv
 ```
-3. Start docker-compose
+3. Unzip charts.csv.zip file
+```bash
+unzip csv/charts.csv.zip
+rm csv/charts.csv.zip
+```
+4. Start docker-compose
 ```bash
 docker-compose up -d
 ```
-4. Go to Airflow UI `localhost:8080` and start dag `project_dag`. Login: admin, password: admin 
-5. To look at the finished tables
+5. Go to Airflow UI `localhost:8080` and start dag `project_dag`. Login: admin, password: admin 
+6. To look at the finished tables
 ```bash
 docker exec -it postgres psql -U admin data
 ```
